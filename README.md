@@ -8,4 +8,6 @@ In this example , a DynamoDB table existed before creating the stack and the tab
 
 The main intention of the example is to create a service with AWS API gateway and lambda and use postman to post data into the revelent dynamodb table. 
 
+AWS cognito is also defined for authentication where postman first need to get required authentication token and then send the post request.
+
 
