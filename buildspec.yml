@@ -5,8 +5,7 @@ phases:
     commands:
       - eco "installing SAM cli"
       - sam --version
-      - sudo apt install aws-sam-cli
-      - sam --version
+   
 
   build:
     commands:
