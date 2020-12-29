@@ -3,16 +3,19 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "installing SAM cli"
+      - echo "Upgrading AWScli"
+      - install --upgrade awscli 
+      - echo "Upgrading SAM cli"
+      - sam --version
+      - install --upgrade aws-sam-cli
       - sam --version
    
-
   build:
     commands:
       - echo "creating Package file for deployment"
-      - aws package --s3-bucket s3://sr-sam-lambda-02 --template-file template.yaml --output-template-file template-generated.yaml
+      - aws cloudformation package --s3-bucket s3://sr-sam-lambda-02 --template-file template.yaml --output-template-file template-generated.yaml
 
   post_build:
     commands:
       - echo "deploy the serverless app"
-      - aws deploy --template-file template-generated.yaml --stack-name sam-cicd-node-server --capabilities CAPABILITY_IAM
+      - aws cloudformation deploy --template-file template-generated.yaml --stack-name sam-cicd-node-server --capabilities CAPABILITY_IAM
