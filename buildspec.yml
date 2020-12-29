@@ -4,7 +4,8 @@ phases:
   install:
     commands:
       - eco "installing SAM cli"
-      - pip install aws-sam-cli
+      - sam --version
+      - pip3 install aws-sam-cli
       - sam --version
 
   build:
