@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  prebuild:
+    commands:
+      - eco "installing SAM cli"
+      - pip install aws-sam-cli
+      - sam --version
+
+  build:
+    commands:
+      - eco "creating Package file for deployment"
+      - aws package --s3-bucket s3://sr-sam-lambda-02 --template-file template.yaml --output-template-file template-generated.yaml
+
+  postbuild:
+    commands:
+      - eco "deploy the serverless app"
+      - aws deploy --template-file template-generated.yaml --stack-name sam-cicd-node-server --capabilities CAPABILITY_IAM
