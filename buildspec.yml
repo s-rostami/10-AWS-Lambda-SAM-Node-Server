@@ -4,10 +4,7 @@ phases:
   install:
     commands:
       - echo "Upgrading AWScli"
-      - install --upgrade awscli 
       - echo "Upgrading SAM cli"
-      - sam --version
-      - install --upgrade aws-sam-cli
       - sam --version
    
   build:
